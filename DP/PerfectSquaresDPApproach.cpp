@@ -2,7 +2,7 @@ class Solution {
 public:
     int numSquares(int n) 
     {
-        vector<int> dp(10000+1,INT_MAX);
+        vector<int> dp(n+1,INT_MAX);
         vector<int> squares;
         for(int i=1;i<=sqrt(n);i++)
         {
