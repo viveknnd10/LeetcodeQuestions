@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 class Solution {
 public:
     int jump(vector<int>& nums) 
@@ -16,3 +18,9 @@ public:
       return dp[0];
     }
 };
+int main()
+    {
+        vector<int> nums={2,3,0,1,4};
+        Solution s;
+        cout<<s.jump(nums);
+    }
