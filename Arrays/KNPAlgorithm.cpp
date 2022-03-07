@@ -56,7 +56,7 @@ class Solution {
 };
 int main()
     {
-        string s="aaaaacaaaaaaaaaaaaa",t="abacdcabakal";
+        string s="aaaaacaaaaaaaaaaaaa",t="aacecaaaa";
         Solution p;
         vector<int> lps=p.lpsMaking(t);
         for(int i=0;i<lps.size();i++)
