@@ -1,33 +1,27 @@
-vector<string> getItems(vector<vector<string>> entries) 
-{
-    vector<string> ans;
-    priority_queue<pair<int,string>,vector<pair<int,string>>,greater<pair<int,string>>> pq;
-    int k=0;
-    for(auto edge:entries)
+#include<bits/stdc++.h>
+using namespace std;
+class Solution {
+public:
+    int jump(vector<int>& nums,int k) 
     {
-        if(edge[0]=="INSERT")
+      int n=nums.size();
+      vector<int> dp(n,INT_MIN+2);
+      dp[n-1]=nums[0];
+      for(int i=n-1;i>=0;i--)
+      {
+        for(int j=1;j<=k;j++)
         {
-            pq.push({stoi(edge[2]),edge[1]});
+          if(i+j<n)
+            dp[i]=max(dp[i],dp[i]+nums[j]);
         }
-        else if(edge[0]=="VIEW")
-        {
-            string namemain="";
-            stack<pair<int,string>> s;
-            for(int i=0;i<=k;i++)
-            {
-                auto [value,name]=pq.top();
-                s.push({value,name});
-                namemain=name;
-                pq.pop();
-            }
-            ans.push_back(namemain);
-            while(!s.empty())
-            {
-                pq.push(s.top());
-                s.pop();
-            }
-            k++;
-        }
+      }
+      return dp[0];
     }
-    return ans;
-}
+};
+int main()
+    {
+        vector<int> nums={3,4,-2,1,2};
+        Solution s;
+        int k=3;
+        cout<<s.jump(nums,k);
+    }

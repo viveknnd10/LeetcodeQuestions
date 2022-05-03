@@ -2,32 +2,22 @@
 using namespace std;
 class Solution {
     public:
-    vector<int> lpsMaking(string t)
+    vector<int> lps(string s)
     {
-        int n=t.size();
-        vector<int> lps(n,0);
-        int i=1,j=0;
-        while(i<n)
+        int n=s.length();
+        vector<int> dp(n,0);
+        dp[0]=0;
+        for(int i=1;i<n;i++)
         {
-            if(t[i]==t[j])
+            for(int j=0;j<i;j++)
             {
-                lps[i]=j+1;
-                j++;
-                i++;
-            }
-            else
-            {
-                if(t[i]!=t[j] && j>0)
+                if(s[i]==s[j])
                 {
-                    j=lps[j-1];
-                }
-                else
-                {
-                    i++;
+                    dp[i]=max(dp[i],dp[j]+1);
                 }
             }
         }
-        return lps;
+        return dp;
     }
     bool knp(string s,string t)
     {
